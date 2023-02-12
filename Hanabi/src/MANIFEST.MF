@@ -1,0 +1,2 @@
+Manifest-Version: 1.0
+Main-Class: fr.umlv.project.hanabi.cli.SimpleGameController

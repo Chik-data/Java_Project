@@ -1,0 +1,37 @@
+<project name="Hanabi" default="jar" basedir=".">
+    <description>
+        Building the Hanabi game with Ant
+    </description>
+    <!-- set global properties for this build -->
+    <property name="src" location="src"/>
+    <property name="build" location="classes"/>
+    <property name="docs" location="doc/docs"/>
+
+    <target name="init">
+        <mkdir dir="${build}"/>
+        <mkdir dir="${docs}"/>
+    </target>
+
+    <target name="compile"
+            description="compile the source" depends="init">
+        <!-- Compile the Java code from ${src} into ${build} -->
+        <javac srcdir="${src}" destdir="${build}"/>
+    </target>
+
+    <target name="jar" depends="compile"
+            description="generate the executable jar">
+        <!-- Put everything in ${build} into the .jar file -->
+        <jar jarfile="hanabi.jar" basedir="${build}" manifest="src/MANIFEST.MF"/>
+    </target>
+
+    <target name="javadoc" description="generate the javadoc">
+        <javadoc sourcepath="${src}" destdir="${docs}"/>
+    </target>
+
+    <target name="clean"
+            description="clean up">
+        <!-- Delete the ${build} and ${dist} directory trees -->
+        <delete dir="${build}" />
+        <delete dir="${docs}"/>
+    </target>
+</project>
